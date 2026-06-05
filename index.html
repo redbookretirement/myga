@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MYGA 고정금리연금 | Redbook 레드북</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #CB0000;
+    --dark: #262625;
+    --text: #1A1A19;
+    --muted: #6B6B68;
+    --border: #E8E8E5;
+    --bg: #FFFFFF;
+    --bg-light: #F4F4F2;
+    --bg-card: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 32px;
+    height: 32px;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-logo-mark span {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .nav-logo-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    letter-spacing: -0.3px;
+  }
+  .nav-cta {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 9px 20px;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    letter-spacing: -0.2px;
+  }
+  .nav-cta:hover { background: #a80000; }
+
+  /* HERO */
+  .hero {
+    background: var(--dark);
+    color: #fff;
+    padding: 80px 2rem 72px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--red);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 5px 14px;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    color: #fff;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--red);
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    max-width: 560px;
+    margin: 0 auto 36px;
+    line-height: 1.65;
+  }
+  .hero-cta {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 36px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .hero-cta:hover { background: #a80000; transform: translateY(-1px); }
+  .hero-note {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* SECTIONS */
+  section { padding: 72px 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.6px;
+    line-height: 1.3;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .section-desc {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 40px;
+    max-width: 580px;
+  }
+
+  /* RATES TABLE */
+  .rates-section {
+    background: var(--dark);
+    color: #fff;
+    padding: 64px 2rem;
+  }
+  .rates-section .section-title { color: #fff; }
+  .rates-section .section-desc { color: rgba(255,255,255,0.55); }
+  .rates-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .rates-date {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 6px;
+  }
+  .rates-note-box {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-left: 3px solid var(--red);
+    padding: 12px 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    max-width: 320px;
+  }
+  .rates-note-box strong { color: rgba(255,255,255,0.8); }
+
+  .rates-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table.rates {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 620px;
+  }
+  table.rates thead th {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.55);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  table.rates thead th:not(:first-child) { text-align: center; }
+  table.rates tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.15s;
+  }
+  table.rates tbody tr:hover { background: rgba(255,255,255,0.04); }
+  table.rates tbody td {
+    padding: 13px 14px;
+    color: rgba(255,255,255,0.85);
+    vertical-align: middle;
+  }
+  table.rates tbody td:not(:first-child) { text-align: center; }
+  .company-name { font-weight: 600; color: #fff; }
+  .rate-val { font-weight: 600; font-size: 15px; }
+  .rate-val.highlight { color: #f87171; }
+  .rate-na { color: rgba(255,255,255,0.25); font-size: 13px; }
+  .rating-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+  }
+  .rating-badge.a-plus { border-color: rgba(203,0,0,0.6); color: var(--red); }
+  .rating-badge.a { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); }
+  .rating-badge.a-minus { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); }
+  .rating-badge.b-pp { border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.4); }
+  .withdrawal-badge {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+  .remark-text { font-size: 12px; color: rgba(255,255,255,0.45); max-width: 200px; }
+  .remark-text strong { color: #fbbf24; }
+
+  /* WHAT IS MYGA */
+  .what-section { background: var(--bg); }
+  .what-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .what-card {
+    background: var(--bg-light);
+    border-left: 3px solid var(--red);
+    padding: 24px 22px;
+  }
+  .what-card-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  .what-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+  .what-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* TRIPLE COMPOUND */
+  .triple-section { background: var(--bg-light); }
+  .triple-visual {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 40px 0 32px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .triple-item {
+    flex: 1;
+    padding: 28px 20px;
+    background: var(--bg);
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .triple-item:last-child { border-right: none; }
+  .triple-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--red);
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .triple-icon span {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+  }
+  .triple-item h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .triple-item p { font-size: 13px; color: var(--muted); }
+  .triple-plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    min-width: 32px;
+    background: var(--bg-light);
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 700;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .triple-box {
+    background: var(--dark);
+    color: #fff;
+    padding: 24px 28px;
+    border-left: 4px solid var(--red);
+    margin-top: 24px;
+  }
+  .triple-box p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.85); }
+  .triple-box strong { color: #fff; }
+
+  /* COMPARISON */
+  .compare-section { background: var(--bg); }
+  .compare-table-wrap { overflow-x: auto; }
+  table.compare {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 580px;
+    margin-top: 32px;
+  }
+  table.compare th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    border-bottom: 2px solid var(--border);
+  }
+  table.compare th:first-child { color: var(--muted); font-weight: 500; }
+  table.compare th.th-myga {
+    background: var(--dark);
+    color: #fff;
+  }
+  table.compare th.th-fia { background: var(--bg-light); color: var(--dark); }
+  table.compare th.th-cd { background: var(--bg-light); color: var(--dark); }
+  table.compare td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+  }
+  table.compare td:first-child { color: var(--muted); font-size: 13px; }
+  table.compare td.td-myga { background: rgba(38,38,37,0.04); font-weight: 500; }
+  table.compare tbody tr:hover td { background: var(--bg-light); }
+  table.compare tbody tr:hover td.td-myga { background: rgba(38,38,37,0.08); }
+  .check { color: var(--red); font-weight: 700; }
+
+  /* TYPES */
+  .types-section { background: var(--bg-light); }
+  .types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .type-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 22px 20px;
+    transition: border-color 0.2s;
+  }
+  .type-card:hover { border-color: var(--red); }
+  .type-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .type-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+  .type-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* OBJECTIONS */
+  .objections-section { background: var(--bg); }
+  .objections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .objection-card {
+    background: var(--bg-light);
+    padding: 24px 22px;
+    border: 1px solid var(--border);
+  }
+  .objection-q {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+    line-height: 1.4;
+  }
+  .objection-q::before {
+    content: '"';
+    color: var(--red);
+  }
+  .objection-q::after {
+    content: '"';
+    color: var(--red);
+  }
+  .objection-a {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .objection-a strong { color: var(--dark); }
+
+  /* FAQ */
+  .faq-section { background: var(--bg-light); }
+  .faq-list { margin-top: 32px; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+    letter-spacing: -0.3px;
+    gap: 16px;
+    user-select: none;
+  }
+  .faq-q:hover { color: var(--red); }
+  .faq-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--red);
+    transition: transform 0.2s;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    padding-bottom: 20px;
+    display: none;
+    border-left: 3px solid var(--red);
+    padding-left: 18px;
+    margin-left: 0;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--dark);
+    color: #fff;
+    text-align: center;
+    padding: 80px 2rem;
+    position: relative;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--red);
+  }
+  .cta-section .section-label { color: rgba(203,0,0,0.9); }
+  .cta-section .section-title { color: #fff; margin-bottom: 16px; text-align: center; }
+  .cta-desc {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    max-width: 500px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    padding: 18px 44px;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .cta-btn:hover { background: #a80000; transform: translateY(-2px); }
+  .cta-sub {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #111110;
+    color: rgba(255,255,255,0.3);
+    padding: 32px 2rem;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  footer strong { color: rgba(255,255,255,0.6); }
+
+  /* TABS */
+  .rates-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .rates-tab {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: rgba(255,255,255,0.4);
+    font-family: 'Pretendard', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 28px 12px;
+    cursor: pointer;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+    letter-spacing: -0.2px;
+  }
+  .rates-tab:hover { color: rgba(255,255,255,0.75); }
+  .rates-tab.active {
+    color: #fff;
+    border-bottom: 2px solid var(--red);
+  }
+
+  /* UTIL */
+  .text-center { text-align: center; }
+  .mt-8 { margin-top: 8px; }
+  .mt-16 { margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark"><span>RB</span></div>
+    <span class="nav-logo-text">레드북 Redbook</span>
+  </a>
+  <a href="https://forms.gle/rupSYvKfHWbYZKN86" target="_blank" class="nav-cta">무료 상담 신청</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">MYGA · 고정금리연금</div>
+  <h1>한방을 노리다가<br><em>한방에 무너질 수 있습니다.</em></h1>
+  <p class="hero-sub">은퇴 5년 전후, 잃으면 안 되는 돈을 지키는 방법이 있습니다. CD보다 높은 금리, 세금이연 복리, 원금 보장 — MYGA를 지금 알아보세요.</p>
+  <a href="https://forms.gle/rupSYvKfHWbYZKN86" target="_blank" class="hero-cta">무료 상담 신청하기 →</a>
+  <p class="hero-note">수수료 없음 · 가입 의무 없음 · 한국어 상담</p>
+</div>
+
+<!-- RATES TABLE -->
+<section class="rates-section">
+  <div class="container">
+    <div class="rates-header">
+      <div>
+        <div class="section-label">최신 금리표</div>
+        <div class="section-title" style="color:#fff; margin-bottom:4px;">이달의 MYGA 금리</div>
+        <div class="rates-date">2026년 5월 기준</div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="rates-tabs">
+      <button class="rates-tab active" onclick="showTab('t3', this)">3년</button>
+      <button class="rates-tab" onclick="showTab('t5', this)">5년</button>
+      <button class="rates-tab" onclick="showTab('t7', this)">7년</button>
+    </div>
+
+    <!-- 3-YEAR -->
+    <div id="t3" class="rates-table-wrap tab-panel">
+      <table class="rates">
+        <thead>
+          <tr>
+            <th>AM Best</th>
+            <th>보험사</th>
+            <th>최소금액</th>
+            <th>최대연령</th>
+            <th>금리</th>
+            <th>무패널티 출금 (1년차 | 2년차+)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rating-badge b-pp">B++</span></td>
+            <td><span class="company-name">F***</span></td>
+            <td>$10,000</td>
+            <td>95</td>
+            <td><span class="rate-val highlight">5.65%</span></td>
+            <td><span class="withdrawal-badge">이자 | 이자</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge a-minus">A-</span></td>
+            <td><span class="company-name">A***</span></td>
+            <td>$100,000</td>
+            <td>89</td>
+            <td><span class="rate-val">5.45%</span></td>
+            <td><span class="withdrawal-badge">0% | 10%</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge b-pp">B++</span></td>
+            <td><span class="company-name">H***</span></td>
+            <td>$5,000</td>
+            <td>90</td>
+            <td><span class="rate-val">5.40%</span></td>
+            <td><span class="withdrawal-badge">이자 | 이자</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge a-plus">A+</span></td>
+            <td><span class="company-name">O***</span></td>
+            <td>$70,000</td>
+            <td>89</td>
+            <td><span class="rate-val">5.05%</span></td>
+            <td><span class="withdrawal-badge">0% | 10%</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge a-plus">A+</span></td>
+            <td><span class="company-name">A***</span></td>
+            <td>$100,000</td>
+            <td>85</td>
+            <td><span class="rate-val">5.00%</span></td>
+            <td><span class="withdrawal-badge">이자 | 이자</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 5-YEAR -->
+    <div id="t5" class="rates-table-wrap tab-panel" style="display:none;">
+      <table class="rates">
+        <thead>
+          <tr>
+            <th>AM Best</th>
+            <th>보험사</th>
+            <th>최소금액</th>
+            <th>최대연령</th>
+            <th>금리</th>
+            <th>무패널티 출금 (1년차 | 2년차+)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rating-badge b-pp">B++</span></td>
+            <td><span class="company-name">F***</span></td>
+            <td>$10,000</td>
+            <td>90</td>
+            <td><span class="rate-val highlight">6.00%</span></td>
+            <td><span class="withdrawal-badge">이자 | 이자</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge b-pp">B++</span></td>
+            <td><span class="company-name">H***</span></td>
+            <td>$5,000</td>
+            <td>90</td>
+            <td><span class="rate-val">5.75%</span></td>
+            <td><span class="withdrawal-badge">이자 | 이자</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge a-minus">A-</span></td>
+            <td><span class="company-name">A***</span></td>
+            <td>$100,000</td>
+            <td>89</td>
+            <td><span class="rate-val">5.70%</span></td>
+            <td><span class="withdrawal-badge">0% | 10%</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge a-minus">A-</span></td>
+            <td><span class="company-name">L***</span></td>
+            <td>$10,000</td>
+            <td>90</td>
+            <td><span class="rate-val">5.40%</span></td>
+            <td><span class="withdrawal-badge">0% | 0%</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge a-minus">A-</span></td>
+            <td><span class="company-name">P***</span></td>
+            <td>$75,000</td>
+            <td>85</td>
+            <td><span class="rate-val">5.35%</span></td>
+            <td><span class="withdrawal-badge">10% | 10%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 7-YEAR -->
+    <div id="t7" class="rates-table-wrap tab-panel" style="display:none;">
+      <table class="rates">
+        <thead>
+          <tr>
+            <th>AM Best</th>
+            <th>보험사</th>
+            <th>최소금액</th>
+            <th>최대연령</th>
+            <th>금리</th>
+            <th>무패널티 출금 (1년차 | 2년차+)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rating-badge b-pp">B++</span></td>
+            <td><span class="company-name">F***</span></td>
+            <td>$10,000</td>
+            <td>90</td>
+            <td><span class="rate-val highlight">5.95%</span></td>
+            <td><span class="withdrawal-badge">이자 | 이자</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge b-pp">B++</span></td>
+            <td><span class="company-name">H***</span></td>
+            <td>$5,000</td>
+            <td>90</td>
+            <td><span class="rate-val">5.80%</span></td>
+            <td><span class="withdrawal-badge">이자 | 이자</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge a-minus">A-</span></td>
+            <td><span class="company-name">A***</span></td>
+            <td>$100,000</td>
+            <td>89</td>
+            <td><span class="rate-val">5.50%</span></td>
+            <td><span class="withdrawal-badge">0% | 10%</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge a-minus">A-</span></td>
+            <td><span class="company-name">L***</span></td>
+            <td>$10,000</td>
+            <td>88</td>
+            <td><span class="rate-val">5.45%</span></td>
+            <td><span class="withdrawal-badge">0% | 0%</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge a">A</span></td>
+            <td><span class="company-name">O***</span></td>
+            <td>$20,000</td>
+            <td>85</td>
+            <td><span class="rate-val">5.45%</span></td>
+            <td><span class="withdrawal-badge">이자 | 10%</span></td>
+          </tr>
+          <tr>
+            <td><span class="rating-badge a">A</span></td>
+            <td><span class="company-name">O***</span></td>
+            <td>$70,000</td>
+            <td>84</td>
+            <td><span class="rate-val">5.40%</span></td>
+            <td><span class="withdrawal-badge">0% | 10%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:16px; font-size:12px; color:rgba(255,255,255,0.3);">* 금리는 수시로 변경될 수 있습니다. 정확한 금리 및 조건은 상담을 통해 안내해 드립니다.</p>
+  </div>
+</section>
+
+<!-- WHAT IS MYGA -->
+<section class="what-section">
+  <div class="container">
+    <div class="section-label">MYGA란?</div>
+    <div class="section-title">CD처럼 안전하게,<br>CD보다 유리하게</div>
+    <p class="section-desc">MYGA(Multi-Year Guarantee Annuity)는 보험사가 발행하는 고정금리 연금입니다. 계약 기간 동안 확정된 이자율이 보장됩니다.</p>
+    <div class="what-grid">
+      <div class="what-card">
+        <div class="what-card-num">01</div>
+        <h3>원금 완전 보호</h3>
+        <p>시장 변동과 무관하게 원금과 확정이자가 100% 보장됩니다. 주가 폭락이 와도 내 돈은 그대로입니다.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-num">02</div>
+        <h3>세금이연 복리성장</h3>
+        <p>이자에 세금을 먼저 떼지 않습니다. 세금이 나갈 돈까지 포함해서 전액이 다음 해 복리의 밑천이 됩니다.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-num">03</div>
+        <h3>확정금리 잠금</h3>
+        <p>계약 시점의 금리가 전 기간 보장됩니다. 시장 금리가 내려가도 내 이자율은 그대로 유지됩니다.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-num">04</div>
+        <h3>만기 후 유연성</h3>
+        <p>만기 시 갱신, 다른 연금으로 1035 교환, 또는 출금·소득전환을 자유롭게 선택할 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIPLE COMPOUNDING -->
+<section class="triple-section">
+  <div class="container">
+    <div class="section-label">트리플 컴파운딩</div>
+    <div class="section-title">세 가지 돈에 모두<br>이자가 붙습니다</div>
+    <p class="section-desc">CD는 매년 이자에서 세금을 먼저 뗍니다. MYGA는 세금이연으로 세 가지 구성요소 전부가 복리의 원금이 됩니다.</p>
+
+    <div class="triple-visual">
+      <div class="triple-item">
+        <div class="triple-icon"><span>원금</span></div>
+        <h3>내가 넣은 돈</h3>
+        <p>처음 투입한<br>원금 전액</p>
+      </div>
+      <div class="triple-plus">+</div>
+      <div class="triple-item">
+        <div class="triple-icon"><span>이자</span></div>
+        <h3>쌓인 이자</h3>
+        <p>지금까지<br>붙은 이자</p>
+      </div>
+      <div class="triple-plus">+</div>
+      <div class="triple-item">
+        <div class="triple-icon"><span>세금</span></div>
+        <h3>이연된 세금</h3>
+        <p>나중에 낼<br>세금까지</p>
+      </div>
+    </div>
+
+    <div class="triple-box">
+      <p>CD는 매년 이자 소득에 세금을 내고 남은 돈에만 다음 해 이자가 붙습니다. MYGA는 세금이 이연되기 때문에 <strong>세금으로 나갈 금액까지 포함한 전체 잔액</strong>에 이자가 계속 붙습니다. 이것이 트리플 컴파운딩입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="compare-section">
+  <div class="container">
+    <div class="section-label">상품 비교</div>
+    <div class="section-title">MYGA vs CD vs FIA</div>
+    <p class="section-desc">세 가지 상품의 핵심 차이를 한눈에 비교하세요.</p>
+    <div class="compare-table-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>항목</th>
+            <th class="th-myga">MYGA</th>
+            <th class="th-fia">FIA</th>
+            <th class="th-cd">CD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>발행 기관</td>
+            <td class="td-myga">보험사</td>
+            <td>보험사</td>
+            <td>은행·신용조합</td>
+          </tr>
+          <tr>
+            <td>금리 유형</td>
+            <td class="td-myga">확정금리 (3~10년)</td>
+            <td>지수연동 (상한/참여율)</td>
+            <td>확정금리 (6개월~5년)</td>
+          </tr>
+          <tr>
+            <td>원금 보호</td>
+            <td class="td-myga"><span class="check">✓</span> 보장</td>
+            <td><span class="check">✓</span> 보장</td>
+            <td><span class="check">✓</span> FDIC $250K</td>
+          </tr>
+          <tr>
+            <td>세금처리</td>
+            <td class="td-myga"><strong>세금이연</strong> 복리</td>
+            <td>세금이연 복리</td>
+            <td>매년 과세</td>
+          </tr>
+          <tr>
+            <td>부분 출금</td>
+            <td class="td-myga">연 10% 무패널티</td>
+            <td>제한적</td>
+            <td>조기출금 패널티</td>
+          </tr>
+          <tr>
+            <td>소득 전환</td>
+            <td class="td-myga">연금화 / 소득라이더</td>
+            <td>연금화 / 소득라이더</td>
+            <td>없음</td>
+          </tr>
+          <tr>
+            <td>리스크 수준</td>
+            <td class="td-myga">낮음</td>
+            <td>낮음~중간</td>
+            <td>매우 낮음</td>
+          </tr>
+          <tr>
+            <td>상품 기간</td>
+            <td class="td-myga">3, 5, 7, 10년</td>
+            <td>5, 7, 10년+</td>
+            <td>6개월 ~ 5년</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TYPES -->
+<section class="types-section">
+  <div class="container">
+    <div class="section-label">MYGA 종류</div>
+    <div class="section-title">내 상황에 맞는<br>MYGA를 고르세요</div>
+    <p class="section-desc">모든 MYGA는 확정금리 구조를 공유하지만, 유동성과 옵션에서 차이가 있습니다.</p>
+    <div class="types-grid">
+      <div class="type-card">
+        <div class="type-tag">기본형</div>
+        <h3>일반 MYGA</h3>
+        <p>3~10년 전 기간 확정금리. 안정적 성장만을 원하는 보수적 투자자에게 최적입니다.</p>
+      </div>
+      <div class="type-card">
+        <div class="type-tag">유동성형</div>
+        <h3>출금 옵션 MYGA</h3>
+        <p>매년 일부 무패널티 출금 가능. 자금이 필요할 수 있는 상황에 대비할 수 있습니다.</p>
+      </div>
+      <div class="type-card">
+        <div class="type-tag">소득형</div>
+        <h3>소득라이더 MYGA</h3>
+        <p>계약 가치를 평생 보장 소득으로 전환. 은퇴 소득 보완을 계획하는 분께 적합합니다.</p>
+      </div>
+      <div class="type-card">
+        <div class="type-tag">MVA형</div>
+        <h3>시장가치조정 MYGA</h3>
+        <p>더 높은 금리 제공 대신 조기 해지 시 시장가치조정(MVA) 적용. 만기 보유 예정자에게 유리합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIONS -->
+<section class="objections-section">
+  <div class="container">
+    <div class="section-label">자주 하시는 질문</div>
+    <div class="section-title">이런 걱정,<br>드실 수 있습니다</div>
+    <p class="section-desc">MYGA에 대해 가장 많이 받는 우려사항들을 정직하게 답변드립니다.</p>
+    <div class="objections-grid">
+      <div class="objection-card">
+        <div class="objection-q">돈이 묶이는 거 아닌가요?</div>
+        <p class="objection-a">많은 MYGA 상품이 <strong>매년 10% 무패널티 출금</strong>을 허용하며, 기간도 3년부터 선택 가능합니다. 단기 상품으로 구조화하면 유동성 부담을 줄일 수 있습니다.</p>
+      </div>
+      <div class="objection-card">
+        <div class="objection-q">보험사가 망하면 어떻게 되나요?</div>
+        <p class="objection-a">보험사는 <strong>엄격한 규제</strong>를 받으며, 주 보증협회(State Guaranty Association)가 계약을 보호합니다. 일반적으로 회사당 소유자당 <strong>$250,000까지</strong> 보호됩니다.</p>
+      </div>
+      <div class="objection-card">
+        <div class="objection-q">주식이 더 수익이 좋지 않나요?</div>
+        <p class="objection-a">MYGA는 <strong>안전성과 예측 가능성</strong>을 위한 상품입니다. 잃어도 되는 돈이 아닌, 잃으면 안 되는 은퇴자금은 다르게 접근해야 합니다. 세후 기준으로 CD보다 유리한 경우가 많습니다.</p>
+      </div>
+      <div class="objection-card">
+        <div class="objection-q">연금은 복잡하지 않나요?</div>
+        <p class="objection-a">MYGA는 연금 중 <strong>가장 단순한 구조</strong>입니다. 돈을 맡기고, 확정이자를 받고, 만기에 결정합니다. CD와 거의 동일한 개념입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">더 궁금하신 것들</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          MYGA는 안전한가요?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">네. MYGA는 매우 안전한 상품으로 간주됩니다. 원금과 확정이자는 시장 손실로부터 완전히 보호되며, 발행 보험사의 지급 보증을 받습니다. 추가로 주 보증협회(State Guaranty Association)가 회사당 소유자당 일반적으로 $250,000까지 보호합니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          금리가 오르면 어떻게 되나요?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">MYGA 금리는 계약 기간 전체에 걸쳐 고정됩니다. 시장 금리가 변동해도 내 이자율은 그대로입니다. 금리 상승이 예상될 경우, 단기 상품(3년)을 선택하고 만기 후 더 높은 금리로 갱신하거나 다른 상품으로 이동(1035 교환)하는 전략을 활용할 수 있습니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          세금은 언제 납부하나요?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">MYGA는 세금이연 방식으로 성장합니다. 출금할 때까지 이자에 대한 세금을 납부하지 않습니다. CD는 매년 이자 소득에 세금이 부과되지만, MYGA는 출금 시점까지 세금 부담 없이 복리가 계속 쌓입니다. 이 차이가 장기적으로 큰 혜택이 됩니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          원금을 잃을 수 있나요?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">아니오. 계약 조건을 준수하는 한, 시장 성과로 인한 원금 손실은 발생하지 않습니다. 원금과 확정이자 모두 시장 상황과 관계없이 보장됩니다. 조기 해지 시 서렌더 차지(해지공제)가 적용될 수 있으나, 계약 기간을 유지하면 전액 보전됩니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          은퇴 소득으로 전환할 수 있나요?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">네. MYGA는 연금화(annuitization) 또는 소득라이더(income rider)를 통해 소득으로 전환할 수 있습니다. 다만 평생 소득과 유연성 측면에서는 FIA(변동지수연금)+소득라이더 방식인 하이브리드 연금이 더 유리한 경우도 많습니다. 두 가지 옵션을 비교하여 최적의 방법을 찾아드립니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="consult">
+  <div class="container">
+    <div class="section-label">무료 상담</div>
+    <div class="section-title">지금의 금리로<br>잠그는 것이 유리합니다</div>
+    <p class="cta-desc">현재 MYGA 금리는 최고점 수준입니다. 앞으로 금리가 내려갈 가능성이 있는 지금, 상담을 통해 내 상황에 맞는 상품을 찾아보세요.</p>
+    <a href="https://forms.gle/rupSYvKfHWbYZKN86" target="_blank" class="cta-btn">무료 상담 신청하기 →</a>
+    <p class="cta-sub">수수료 없음 · 가입 의무 없음 · 한국어 상담 가능</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>레드북 Redbook</strong> · @redbook.retire</p>
+  <p style="margin-top:8px;">본 페이지의 내용은 교육 목적의 정보 제공이며, 특정 보험 상품의 가입을 권유하는 것이 아닙니다.<br>개인 상황에 따라 적합한 상품이 다를 수 있으며, 상담을 통해 정확한 정보를 안내해 드립니다.</p>
+  <p style="margin-top:8px;">Insurance products are not deposits, not FDIC-insured, not insured by any federal government agency, and not guaranteed by the bank.</p>
+</footer>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.rates-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).style.display = 'block';
+  btn.classList.add('active');
+}
+function toggleFAQ(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>
