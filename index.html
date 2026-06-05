@@ -177,12 +177,12 @@
 
   /* RATES TABLE */
   .rates-section {
-    background: var(--dark);
-    color: #fff;
+    background: var(--bg-light);
+    color: var(--text);
     padding: 64px 2rem;
   }
-  .rates-section .section-title { color: #fff; }
-  .rates-section .section-desc { color: rgba(255,255,255,0.55); }
+  .rates-section .section-title { color: var(--dark); }
+  .rates-section .section-desc { color: var(--muted); }
   .rates-header {
     display: flex;
     align-items: flex-start;
@@ -193,20 +193,20 @@
   }
   .rates-date {
     font-size: 13px;
-    color: rgba(255,255,255,0.45);
+    color: var(--muted);
     margin-top: 6px;
   }
   .rates-note-box {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: #fff;
+    border: 1px solid var(--border);
     border-left: 3px solid var(--red);
     padding: 12px 16px;
     font-size: 12px;
-    color: rgba(255,255,255,0.55);
+    color: var(--muted);
     line-height: 1.6;
     max-width: 320px;
   }
-  .rates-note-box strong { color: rgba(255,255,255,0.8); }
+  .rates-note-box strong { color: var(--dark); }
 
   .rates-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   table.rates {
@@ -216,8 +216,8 @@
     min-width: 620px;
   }
   table.rates thead th {
-    background: rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.55);
+    background: var(--dark);
+    color: rgba(255,255,255,0.7);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -228,38 +228,39 @@
   }
   table.rates thead th:not(:first-child) { text-align: center; }
   table.rates tbody tr {
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid var(--border);
     transition: background 0.15s;
+    background: #fff;
   }
-  table.rates tbody tr:hover { background: rgba(255,255,255,0.04); }
+  table.rates tbody tr:hover { background: var(--bg-light); }
   table.rates tbody td {
     padding: 13px 14px;
-    color: rgba(255,255,255,0.85);
+    color: var(--text);
     vertical-align: middle;
   }
   table.rates tbody td:not(:first-child) { text-align: center; }
-  .company-name { font-weight: 600; color: #fff; }
-  .rate-val { font-weight: 600; font-size: 15px; }
-  .rate-val.highlight { color: #f87171; }
-  .rate-na { color: rgba(255,255,255,0.25); font-size: 13px; }
+  .company-name { font-weight: 600; color: var(--dark); }
+  .rate-val { font-weight: 600; font-size: 15px; color: var(--dark); }
+  .rate-val.highlight { color: var(--red); }
+  .rate-na { color: var(--border); font-size: 13px; }
   .rating-badge {
     display: inline-block;
     padding: 2px 8px;
     font-size: 11px;
     font-weight: 700;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.7);
+    border: 1px solid var(--border);
+    color: var(--muted);
   }
-  .rating-badge.a-plus { border-color: rgba(203,0,0,0.6); color: var(--red); }
-  .rating-badge.a { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); }
-  .rating-badge.a-minus { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); }
-  .rating-badge.b-pp { border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.4); }
+  .rating-badge.a-plus { border-color: var(--red); color: var(--red); }
+  .rating-badge.a { border-color: var(--dark); color: var(--dark); }
+  .rating-badge.a-minus { border-color: var(--muted); color: var(--muted); }
+  .rating-badge.b-pp { border-color: var(--border); color: var(--muted); }
   .withdrawal-badge {
     font-size: 12px;
-    color: rgba(255,255,255,0.5);
+    color: var(--muted);
   }
-  .remark-text { font-size: 12px; color: rgba(255,255,255,0.45); max-width: 200px; }
-  .remark-text strong { color: #fbbf24; }
+  .remark-text { font-size: 12px; color: var(--muted); max-width: 200px; }
+  .remark-text strong { color: var(--dark); }
 
   /* WHAT IS MYGA */
   .what-section { background: var(--bg); }
@@ -566,13 +567,13 @@
     display: flex;
     gap: 0;
     margin-bottom: 24px;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
+    border-bottom: 1px solid var(--border);
   }
   .rates-tab {
     background: transparent;
     border: none;
     border-bottom: 2px solid transparent;
-    color: rgba(255,255,255,0.4);
+    color: var(--muted);
     font-family: 'Pretendard', sans-serif;
     font-size: 15px;
     font-weight: 600;
@@ -582,9 +583,9 @@
     transition: color 0.15s, border-color 0.15s;
     letter-spacing: -0.2px;
   }
-  .rates-tab:hover { color: rgba(255,255,255,0.75); }
+  .rates-tab:hover { color: var(--dark); }
   .rates-tab.active {
-    color: #fff;
+    color: var(--dark);
     border-bottom: 2px solid var(--red);
   }
 
@@ -620,7 +621,7 @@
     <div class="rates-header">
       <div>
         <div class="section-label">최신 금리표</div>
-        <div class="section-title" style="color:#fff; margin-bottom:4px;">이달의 MYGA 금리</div>
+        <div class="section-title" style="margin-bottom:4px;">이달의 MYGA 금리</div>
         <div class="rates-date">2026년 5월 기준</div>
       </div>
     </div>
@@ -814,7 +815,7 @@
       </table>
     </div>
 
-    <p style="margin-top:16px; font-size:12px; color:rgba(255,255,255,0.3);">* 금리는 수시로 변경될 수 있습니다. 정확한 금리 및 조건은 상담을 통해 안내해 드립니다.</p>
+    <p style="margin-top:16px; font-size:12px; color:var(--muted);">* 금리는 수시로 변경될 수 있습니다. 정확한 금리 및 조건은 상담을 통해 안내해 드립니다.</p>
   </div>
 </section>
 
@@ -886,15 +887,14 @@
 <section class="compare-section">
   <div class="container">
     <div class="section-label">상품 비교</div>
-    <div class="section-title">MYGA vs CD vs FIA</div>
-    <p class="section-desc">세 가지 상품의 핵심 차이를 한눈에 비교하세요.</p>
+    <div class="section-title">MYGA vs CD</div>
+    <p class="section-desc">두 가지 상품의 핵심 차이를 한눈에 비교하세요.</p>
     <div class="compare-table-wrap">
       <table class="compare">
         <thead>
           <tr>
             <th>항목</th>
             <th class="th-myga">MYGA</th>
-            <th class="th-fia">FIA</th>
             <th class="th-cd">CD</th>
           </tr>
         </thead>
@@ -902,49 +902,41 @@
           <tr>
             <td>발행 기관</td>
             <td class="td-myga">보험사</td>
-            <td>보험사</td>
             <td>은행·신용조합</td>
           </tr>
           <tr>
             <td>금리 유형</td>
             <td class="td-myga">확정금리 (3~10년)</td>
-            <td>지수연동 (상한/참여율)</td>
             <td>확정금리 (6개월~5년)</td>
           </tr>
           <tr>
             <td>원금 보호</td>
             <td class="td-myga"><span class="check">✓</span> 보장</td>
-            <td><span class="check">✓</span> 보장</td>
             <td><span class="check">✓</span> FDIC $250K</td>
           </tr>
           <tr>
             <td>세금처리</td>
             <td class="td-myga"><strong>세금이연</strong> 복리</td>
-            <td>세금이연 복리</td>
             <td>매년 과세</td>
           </tr>
           <tr>
             <td>부분 출금</td>
             <td class="td-myga">연 10% 무패널티</td>
-            <td>제한적</td>
             <td>조기출금 패널티</td>
           </tr>
           <tr>
             <td>소득 전환</td>
             <td class="td-myga">연금화 / 소득라이더</td>
-            <td>연금화 / 소득라이더</td>
             <td>없음</td>
           </tr>
           <tr>
             <td>리스크 수준</td>
             <td class="td-myga">낮음</td>
-            <td>낮음~중간</td>
             <td>매우 낮음</td>
           </tr>
           <tr>
             <td>상품 기간</td>
             <td class="td-myga">3, 5, 7, 10년</td>
-            <td>5, 7, 10년+</td>
             <td>6개월 ~ 5년</td>
           </tr>
         </tbody>
